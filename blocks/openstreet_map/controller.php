@@ -7,7 +7,7 @@ defined('C5_EXECUTE') or die('Access Denied.');
 use Concrete\Core\Block\BlockController;
 use Concrete\Core\Page\Page;
 use Concrete\Core\Support\Facade\Config;
-
+use Concrete\Core\Error\ErrorList\ErrorList;
 class Controller extends BlockController  
 {
 
@@ -30,7 +30,7 @@ class Controller extends BlockController
 
     public function validate($args)
     {
-        $error = Core::make('helper/validation/error');
+        $error = $this->app->make(ErrorList::class);
 
         if (!trim($args['apiKey'])) {
             $error->add(t('Please enter a valid API key.'));
@@ -53,11 +53,7 @@ class Controller extends BlockController
     {
         $c = Page::getCurrentPage();
         if (!$c->isEditMode()) {
-            $this->addFooterItem(
-                '<script defer src="https://maps.googleapis.com/maps/api/js?callback=concreteGoogleMapInit&key='
-                . Config::get('app.api_keys.openstreet.maps')
-                .'"></script>'
-            );
+            $this->requireAsset('mapbox-gl');
         }
     }
 

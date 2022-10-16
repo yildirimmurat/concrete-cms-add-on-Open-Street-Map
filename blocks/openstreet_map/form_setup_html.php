@@ -67,8 +67,10 @@ $scrollwheel = !empty($scrollwheel);
         <div id="ccm-google-map-block-location" class="form-group">
             <?= $form->label('location', t('Location')  . ' <i class="fa fa-question-circle launch-tooltip" title="' . t('Start typing a location (e.g. Apple Store or 235 W 3rd, New York) then click on the correct entry on the list.') . '"></i>') ?>
             <?= $form->text('location', $location) ?>
-            <?= $form->hidden('latitude', $latitude) ?>
-            <?= $form->hidden('longitude', $longitude) ?>
+            <?= $form->label('latitude', t('Latitude')  . ' <i class="fa fa-question-circle launch-tooltip" title="' . t('Latitude value.') . '"></i>') ?>
+            <?= $form->text('latitude', $latitude) ?>
+            <?= $form->label('longitude', t('Longitude')  . ' <i class="fa fa-question-circle launch-tooltip" title="' . t('Longitude value.') . '"></i>') ?>
+            <?= $form->text('longitude', $longitude) ?>
             <div id="map-canvas"></div>
         </div>
     </div>

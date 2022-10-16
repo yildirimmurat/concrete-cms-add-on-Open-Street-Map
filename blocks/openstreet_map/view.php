@@ -15,13 +15,36 @@ if ($c->isEditMode()) {
     $loc->popActiveContext();
 } else { ?>
 	<?php  if( strlen($title)>0) { ?><h3><?=$title?></h3><?php  } ?>
-	<div class="googleMapCanvas"
-         style="width: <?=$width?>; height: <?=$height?>"
-         data-zoom="<?=$zoom?>"
-         data-latitude="<?=$latitude?>"
-         data-longitude="<?=$longitude?>"
-         data-scrollwheel="<?=!!$scrollwheel ? "true" : "false"?>"
-         data-draggable="<?=!!$scrollwheel ? "true" : "false"?>"
-    >
+    <div class="map-wrapper" id="map-wrapper-<?= $bID ?>">
+        <div class="loader-wrapper">
+            <div class="loader" id="loader-<?= $bID ?>">
+                <div class="loader-inner">
+                    <div class="spinner">
+                        <div class="double-bounce1"></div>
+                        <div class="double-bounce2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Container for the Map -->
+        <div class='map'></div> 
+        <!-- End of Container -->
     </div>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const map = new Mapbox (
+                "#map-wrapper-<?= $bID ?>",
+                '.loader-wrapper .loader',
+                '.map',
+                'pk.eyJ1IjoibXVyYXR5aWwiLCJhIjoiY2w5YjM1bXJuMGZjajN4bGV5bDNxZnVydiJ9.QIqmJixrZfWmYKJhLjVqFg',
+                'icon icon-icon-marker feature-icon-small',
+                16,
+                47.0,
+                9.5,
+                'marker',
+                'mapbox://styles/mapbox/light-v10',
+            );       
+        });
+    </script>
 <?php  } ?>
