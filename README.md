@@ -9,3 +9,8 @@
 
 # Next steps
 
+1. add custom marker
+2. add marker in a selected location, right, left, top, bottom
+3. user should select the type of map view from mapbox
+4. user type address and edit view should recommend places
+5. undo comments on controller

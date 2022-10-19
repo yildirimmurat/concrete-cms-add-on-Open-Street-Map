@@ -32,21 +32,21 @@ class Controller extends BlockController
     {
         $error = $this->app->make(ErrorList::class);
 
-        if (!trim($args['apiKey'])) {
-            $error->add(t('Please enter a valid API key.'));
-        }
+        // if (!trim($args['apiKey'])) {
+        //     $error->add(t('Please enter a valid API key.'));
+        // }
 
-        if (empty($args['location']) || $args['latitude'] === '' || $args['longtitude'] === '') {
-            $error->add(t('You must select a valid location.'));
-        }
+        // if (empty($args['location']) || $args['latitude'] === '' || $args['longtitude'] === '') {
+        //     $error->add(t('You must select a valid location.'));
+        // }
 
-        if (!is_numeric($args['zoom'])) {
-            $error->add(t('Please enter a zoom number from 0 to 21.'));
-        }
+        // if (!is_numeric($args['zoom'])) {
+        //     $error->add(t('Please enter a zoom number from 0 to 21.'));
+        // }
 
-        if ($error->has()) {
-            return $error;
-        }
+        // if ($error->has()) {
+        //     return $error;
+        // }
     }
 
     public function registerViewAssets($outputContent = '')

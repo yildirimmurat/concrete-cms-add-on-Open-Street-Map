@@ -2,6 +2,10 @@
 
 use Concrete\Core\Page\Page;
 use Concrete\Core\Localization\Localization;
+use Concrete\Core\Support\Facade\Site;
+
+$site = Site::getSite();
+$token = $site->getAttribute('mapbox_access_token');
 
 $c = Page::getCurrentPage();
 if ($c->isEditMode()) {
@@ -28,7 +32,7 @@ if ($c->isEditMode()) {
         </div>
 
         <!-- Container for the Map -->
-        <div class='map'></div> 
+        <div class='map' style="height: 500px"></div> 
         <!-- End of Container -->
     </div>
     <script>
@@ -37,11 +41,11 @@ if ($c->isEditMode()) {
                 "#map-wrapper-<?= $bID ?>",
                 '.loader-wrapper .loader',
                 '.map',
-                'pk.eyJ1IjoibXVyYXR5aWwiLCJhIjoiY2w5YjM1bXJuMGZjajN4bGV5bDNxZnVydiJ9.QIqmJixrZfWmYKJhLjVqFg',
+                '<?= $token ?>',
                 'icon icon-icon-marker feature-icon-small',
-                16,
-                47.0,
-                9.5,
+                parseInt(<?= $zoom ?>),
+                parseFloat(<?= $latitude ?>),
+                parseFloat(<?= $longitude ?>),
                 'marker',
                 'mapbox://styles/mapbox/light-v10',
             );       
