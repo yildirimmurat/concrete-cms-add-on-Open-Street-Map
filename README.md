@@ -14,3 +14,4 @@
 3. user should select the type of map view from mapbox
 4. user type address and edit view should recommend places
 5. undo comments on controller
+6. center edit mode text

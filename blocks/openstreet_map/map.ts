@@ -36,6 +36,8 @@ class Mapbox {
             loader: '.loader-wrapper .loader',
             map: '.map'
         },
+        width: '100%',
+        height: '400px',
         accessToken: '',
         markerIcon: 'icon icon-icon-marker',
         zoomLevel: 16,
@@ -56,6 +58,8 @@ class Mapbox {
         container: string,
         loader: string,
         map: string,
+        width: string,
+        height: string,
         accessToken: string,
         markerIcon: string,
         zoomLevel: number,
@@ -67,6 +71,8 @@ class Mapbox {
         this.#settings.ids.container = container
         this.#settings.classes.loader = loader
         this.#settings.classes.map = map
+        this.#settings.width = width
+        this.#settings.height = height
         this.#settings.accessToken = accessToken
         this.#settings.markerIcon = markerIcon
         this.#settings.zoomLevel = zoomLevel
@@ -81,6 +87,7 @@ class Mapbox {
   
         if (this.#htmlElements.container) {
             this.initHtmlElements()
+            this.styleHtmlElements()
             this.initEvent()
             this.initMap()
         }
@@ -93,6 +100,11 @@ class Mapbox {
         this.#htmlElements.map = this.#htmlElements.container?.querySelector(
             this.#settings.classes.map
         )
+    }
+
+    private styleHtmlElements() {
+        (this.#htmlElements.map as HTMLElement).style.width = this.#settings.width;
+        (this.#htmlElements.map as HTMLElement).style.height = this.#settings.height;
     }
 
     private initEvent() { }

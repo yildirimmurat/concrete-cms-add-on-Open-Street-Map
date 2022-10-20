@@ -41,6 +41,8 @@ if ($c->isEditMode()) {
                 "#map-wrapper-<?= $bID ?>",
                 '.loader-wrapper .loader',
                 '.map',
+                '<?= $width ?>',
+                '<?= $height ?>',
                 '<?= $token ?>',
                 'icon icon-icon-marker feature-icon-small',
                 parseInt(<?= $zoom ?>),
